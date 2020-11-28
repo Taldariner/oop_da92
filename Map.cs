@@ -4,12 +4,22 @@ using System.Runtime.InteropServices;
 
 namespace Map
 {
+    public class monster_prop
+    {
+        public string name;
+    }
+    public class loot_prop
+    {
+        public string name;
+    }
     public class cell
     {
         public string terrain;
         public string terra;
-        public string mob;
-        public string loot;
+        //public string mob;
+        //public string loot;
+        public monster_prop monster;
+        public loot_prop item;
     }
     public class karta
     {
@@ -118,11 +128,15 @@ namespace Map
                     }
                     else
                     {
-                        this.kart[i, j].terrain = "Водоём";
-                        this.kart[i, j].terra = "~";
+                        kart[i, j].terrain = "Водоём";
+                        kart[i, j].terra = "~";
                     }
-                    this.kart[i, j].mob = mob_list[rand.Next(0, mob_list.Length)];
-                    this.kart[i, j].loot = loot_list[rand.Next(0, loot_list.Length)];
+                    //this.kart[i, j].mob = mob_list[rand.Next(0, mob_list.Length)];
+                    //this.kart[i, j].loot = loot_list[rand.Next(0, loot_list.Length)];
+                    this.kart[i, j].monster = new monster_prop();
+                    this.kart[i, j].item = new loot_prop();
+                    this.kart[i, j].monster.name = mob_list[rand.Next(0, mob_list.Length)];
+                    this.kart[i, j].item.name = loot_list[rand.Next(0, loot_list.Length)];
                 }
             }
         }
@@ -145,7 +159,7 @@ namespace Map
             {
                 for (int j = 0; j < 25; j++)
                 {
-                    sw.WriteLine(kart[i, j].terrain + ' ' + kart[i, j].terra + ' ' + kart[i, j].mob + ' ' + kart[i, j].loot);                    
+                    sw.WriteLine(kart[i, j].terrain + ' ' + kart[i, j].terra + ' ' + kart[i, j].monster.name + ' ' + kart[i, j].item.name);                    
                 }
             }
             sw.Close();
@@ -161,8 +175,8 @@ namespace Map
                     string[] splitLine = line.Split(' ');
                     kart[i, j].terrain = splitLine[0];
                     kart[i, j].terra = splitLine[1];
-                    kart[i, j].mob = splitLine[2];
-                    kart[i, j].loot = splitLine[3];
+                    kart[i, j].monster.name = splitLine[2];
+                    kart[i, j].item.name = splitLine[3];
                 }
             }
             sr.Close();
