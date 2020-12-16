@@ -16,8 +16,9 @@ namespace oooop
 		{
 			Game.Player = new Player("Lisa");
 			Game.Objects.Add(Game.Player);
-			Game.Player.Inventory.Add(new Armor("Пиво", 5));
-			Game.Player.Inventory.Add(new Weapon("Ружье", 50));
+			//Game.Player.Inventory.Add(new Armor("Ботинок", 5));
+			//Game.Player.Inventory.Add(new Weapon("Ружье", 50));
+			Game.Player.Inventory.Add(new Potion("Хлеб", 50));
 			
 		}
 
