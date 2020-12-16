@@ -23,6 +23,15 @@ namespace oooop
 
 				inventory.RemoveAt(index);
 			}
+			
+			else if(inventory[index] is IWearable)
+ 			{
+ 				IWearable item = inventory[index] as IWearable;
+ 				item.Wear(this);
+
+ 				inventory.RemoveAt(index);
+ 			}
+			
 			else
 			{
 				Console.WriteLine("You can't use that!");
